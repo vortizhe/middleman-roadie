@@ -10,8 +10,8 @@ module Middleman
       # Call super to build options from the options_hash
       super
 
-    # Require libraries only when activated
-    # require 'necessary/library'
+      # Require libraries only when activated
+      require 'roadie'
 
       # set up your extension
       # puts options.my_option
