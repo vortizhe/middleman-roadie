@@ -1,6 +1,8 @@
 require "middleman-core"
 
-Middleman::Extensions.register :middleman-roadie do
-  require "my-extension/extension"
-  MyExtension
+require "middleman-roadie/version"
+
+Middleman::Extensions.register :roadie do
+  require "middleman-roadie/extension"
+  ::Middleman::Roadie
 end
