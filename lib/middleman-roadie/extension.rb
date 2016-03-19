@@ -1,17 +1,14 @@
-# Require core library
+require 'roadie'
 require 'middleman-core'
 
 # Extension namespace
 module Middleman
-  class Roadie < ::Middleman::Extension
+  class RoadieExtension < Extension
     option :my_option, 'default', 'An example option'
 
     def initialize(app, options_hash={}, &block)
       # Call super to build options from the options_hash
       super
-
-      # Require libraries only when activated
-      require 'roadie'
 
       # set up your extension
       # puts options.my_option
@@ -25,9 +22,5 @@ module Middleman
     # def manipulate_resource_list(resources)
     # end
 
-    # helpers do
-    #   def a_helper
-    #   end
-    # end
   end
 end
