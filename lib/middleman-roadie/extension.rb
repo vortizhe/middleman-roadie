@@ -21,6 +21,13 @@ module Middleman
     # A Sitemap Manipulator
     # def manipulate_resource_list(resources)
     # end
+    helpers do
+      def stylesheet_inline_tag(name)
+        name += ".css" unless name.include?(".css")
+        css_path = sitemap.resources.select { |p| p.source_file.include?(name) }.first
+        "<style type='text/css'>#{css_path.render}</style>"
+      end
+    end
 
     class Rack
       def initialize(app, options = {})
