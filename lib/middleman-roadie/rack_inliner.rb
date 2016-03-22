@@ -1,13 +1,13 @@
 class RackInliner
   def initialize(app, options = {})
     @app = app
-    @options = options
+    @path = /^(\/#{ options[:path] }\/)/
   end
 
   def call(env)
     status, headers, body = @app.call(env)
 
-    if headers.key? 'Content-Type' and headers['Content-Type'] =~ /html/
+    if env['PATH_INFO'].match(@path) && headers.key?('Content-Type') and headers['Content-Type'].start_with?('text/html')
       content = ''
 
       body.each do |part|
