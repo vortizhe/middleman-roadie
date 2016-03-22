@@ -10,7 +10,7 @@ Put `activate :roadie` in config.rb (*not* in the `configure :build` block).
 
 ## Usage
 
-Use a custom layout for email rendering page `'/email/*', layout: :email` in config.rb.
+Use a custom layout for email rendering `page '/email/*', layout: :email` in config.rb.
 
 **Important:** link stylesheets to be inlined using `stylesheet_inline_tag 'your_css'` helper.
 
