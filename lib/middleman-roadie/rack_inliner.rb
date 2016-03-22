@@ -8,7 +8,6 @@ class RackInliner
     status, headers, body = @app.call(env)
 
     if env['PATH_INFO'].match(@path) && headers.key?('Content-Type') and headers['Content-Type'].start_with?('text/html')
-      binding.pry
       content = ''
 
       body.each do |part|
