@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
   s.name        = "middleman-roadie"
   s.version     = Middleman::Roadie::VERSION
   s.platform    = Gem::Platform::RUBY
-  # s.authors     = ["Your Name"]
-  # s.email       = ["email@example.com"]
-  # s.homepage    = "http://example.com"
-  # s.summary     = %q{A short summary of your extension}
-  # s.description = %q{A longer description of your extension}
+  s.authors     = ["Victor Ortiz"]
+  s.email       = ["kespers@gmail.com"]
+  s.homepage    = "https://github.com/vortizhe/middleman-roadie"
+  s.summary     = %q{Roadie Middleman extension adaptor}
+  s.description = %q{Automatize email inlining css with roadie}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
