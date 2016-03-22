@@ -8,6 +8,7 @@ class RackInliner
     status, headers, body = @app.call(env)
 
     if env['PATH_INFO'].match(@path) && headers.key?('Content-Type') and headers['Content-Type'].start_with?('text/html')
+      binding.pry
       content = ''
 
       body.each do |part|
@@ -16,7 +17,7 @@ class RackInliner
 
       email = transform_html(content)
 
-      headers['Content-Length'] = email.bytesize.to_s if headers['Content-Length']
+      headers['Content-Length'] = Rack::Utils.bytesize(email).to_s if headers['Content-Length']
       [status, headers, [email]]
     else
       [status, headers, body]
