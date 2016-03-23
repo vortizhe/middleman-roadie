@@ -23,10 +23,10 @@ module Middleman
     # end
     helpers do
       def stylesheet_inline_tag(name, import = true)
-        ignore_tag = import ? '' : ' data-roadie-ignore'
+        ignore_tag = import ? '' : 'data-roadie-ignore'
         name += ".css" unless name.include?(".css")
         css_path = sitemap.resources.select { |p| p.source_file.include?(name) }.first
-        "<style type='text/css'<%= #{ignore_tag} %>>#{css_path.render}</style>"
+        "<style type='text/css' #{ignore_tag}>#{css_path.render}</style>"
       end
     end
   end
