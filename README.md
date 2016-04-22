@@ -16,6 +16,11 @@ Use a custom layout for email rendering `page '/email/*', layout: :email` in con
 
 If for some reason you need to include styles but don't want to be inlined on html, just include with `stylesheet_inline_tag your_styles, false`
 
+## TODO
+
+* Add layout setting for override default email layout
+* Add possibility to pass options to roadie
+
 ## Contributing
 
 1. Fork it
