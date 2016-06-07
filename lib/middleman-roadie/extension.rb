@@ -1,3 +1,4 @@
+require 'mail'
 require 'roadie'
 require 'middleman-core'
 
@@ -16,6 +17,21 @@ module Middleman
 
     def after_configuration
       app.use RackInliner, options
+    end
+
+    def after_build(builder)
+      @app_config = app.config
+      Dir.glob("#{app.config[:build_dir]}/email/**/*.html") do |file|
+        app.logger.info "Sending #{file.to_s}"
+        mail = ::Mail.new
+        mail.from app.config[:email_from]
+        mail.to app.config[:email_to]
+        mail.subject 'Test it!'
+        mail.content_type 'text/html; charset=UTF-8'
+        mail.body File.read(file)
+        mail.delivery_method :smtp, app.config[:smtp_settings]
+        mail.deliver
+      end
     end
 
     # A Sitemap Manipulator

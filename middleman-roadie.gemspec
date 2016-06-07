@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   # The version of middleman-core your extension depends on
   s.add_runtime_dependency("middleman-core", [">= 4.1.2"])
+  s.add_runtime_dependency("mail", [">= 2.6.4"])
 
   # Additional dependencies
   s.add_runtime_dependency("roadie", ["~> 3.1.1"])
