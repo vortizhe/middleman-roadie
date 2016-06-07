@@ -19,16 +19,20 @@ module Middleman
       app.use RackInliner, options
     end
 
-    def after_build(builder)
-      @app_config = app.config
-      Dir.glob("#{app.config[:build_dir]}/email/**/*.html") do |file|
-        app.logger.info "Sending #{file.to_s}"
+    def before_build(builder)
+      builder.on_build_event(&method(:on_build))
+    end
+
+    protected
+    def on_build(event_type, target, extra=nil)
+      if (event_type == :created || event_type == :updated) && /\/email\// =~ target.to_s
+        app.logger.info "Sending test email #{target.to_s}"
         mail = ::Mail.new
         mail.from app.config[:email_from]
         mail.to app.config[:email_to]
-        mail.subject 'Test it!'
+        mail.subject 'Roadie test it!'
         mail.content_type 'text/html; charset=UTF-8'
-        mail.body File.read(file)
+        mail.body File.read(target.to_s)
         mail.delivery_method :smtp, app.config[:smtp_settings]
         mail.deliver
       end
