@@ -28,7 +28,8 @@ class RackInliner
   private
 
   def transform_html(old_html)
+    nbsp = Nokogiri::HTML("&nbsp;").text
     document = ::Roadie::Document.new old_html
-    document.transform
+    document.transform.gsub(nbsp, "&nbsp;")
   end
 end
