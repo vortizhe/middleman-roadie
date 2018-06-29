@@ -21,5 +21,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("middleman-core", [">= 4.1.2"])
 
   # Additional dependencies
-  s.add_runtime_dependency("roadie", ["~> 3.1.1"])
+  s.add_runtime_dependency("roadie", ["~> 3.3.0"])
 end

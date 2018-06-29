@@ -5,6 +5,7 @@ require 'middleman-core'
 module Middleman
   class RoadieExtension < Extension
     option :path, 'email', 'Path to render override'
+    option :mode, :html
 
     def initialize(app, options_hash={}, &block)
       # Call super to build options from the options_hash

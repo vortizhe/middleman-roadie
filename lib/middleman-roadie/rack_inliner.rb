@@ -2,6 +2,7 @@ class RackInliner
   def initialize(app, options = {})
     @app = app
     @path = /^(\/#{ options[:path] }\/)/
+    @roadie_mode = options[:mode]
   end
 
   def call(env)
@@ -30,6 +31,7 @@ class RackInliner
   def transform_html(old_html)
     nbsp = Nokogiri::HTML("&nbsp;").text
     document = ::Roadie::Document.new old_html
+    document.mode = @roadie_mode
     document.transform.gsub(nbsp, "&nbsp;")
   end
 end
